@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <cmath>
 
 void GameMode::init(std::string path) {
 	std::ifstream fin(path);
@@ -79,7 +80,7 @@ void GameMode::sRender() {
 void GameMode::sMovement() {
 	// MOVEMENT OF BULETS AND ENEMY USING TRANSFORM
 	for (auto e : m_entityManager.getEntities()) {
-		if (e->getTag() == "enemy" || e->getTag() == "bullet") {
+		if (e->getTag() == "enemy" || e->getTag() == "bullet" || e->getTag() == "small enemy") {
 			if (e->CTransform && e->CShape) {
 				e->CTransform->pos.x += e->CTransform->vel.x;
 				e->CTransform->pos.y += e->CTransform->vel.y;
@@ -251,12 +252,16 @@ void GameMode::sEnemySpawner() {
 }
 
 void GameMode::smallEnemySpawner(std::shared_ptr<Entity> parant) {
+	float pi = 3.14159f;
 	int i = 0;
-	while (i < 3) {
+	while (i < parant->CShape->shape.getPointCount()) {
 		auto se = m_entityManager.addEntity("small enemy");
-		se->CTransform = std::make_shared<Component::CTransform>(parant->CTransform->pos, parant->CTransform->vel);
-		se->CShape = std::make_shared<Component::CShape>(parant->CShape->shape.getPointCount(), parant->CShape->shape.getRadius() / 2, sf::Color::Yellow, sf::Color::Blue,parant->CTransform->pos ,2);
-		se->CLifespan = std::make_shared<Component::CLifespan>(60);
+		float angle = ((float) i/parant->CShape->shape.getPointCount()) * (2.0f * pi);
+		se->CTransform = std::make_shared<Component::CTransform>(parant->CTransform->pos, 
+			Vec2(EnemyConfig.SMIN * std::cos(angle), EnemyConfig.SMIN * std::sin(angle)));
+		se->CShape = std::make_shared<Component::CShape>(parant->CShape->shape.getPointCount(), parant->CShape->shape.getRadius() / 2,
+			parant->CShape->shape.getFillColor(), parant->CShape->shape.getOutlineColor(), parant->CTransform->pos, 2);
+		se->CLifespan = std::make_shared<Component::CLifespan>(30);
 		i++;
 	}
 }
