@@ -68,9 +68,9 @@ If you want to compile the source code yourself:
 
 (Note: Make sure Config.txt and arial.ttf are in the same directory as your compiled .exe)
 
-📂 Assets
+## 📂 Assets
 Font: Arial
 Graphics: Procedurally generated SFML shapes (sf::CircleShape).
 
-👨‍💻 Author
-Developed by ARVIND KUMAR as a journey into C++ Game Engine Architecture.
+## 👨‍💻 Author
+Developed by **_ARVIND KUMAR_** as a journey into C++ Game Engine Architecture.
