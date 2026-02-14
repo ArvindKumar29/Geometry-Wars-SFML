@@ -3,7 +3,11 @@
 A fast-paced, 2D arcade survival shooter built entirely from scratch using **C++** and the **SFML (Simple and Fast Multimedia Library)**. This game features a custom-built Entity-Component-System (ECS) architecture to handle rendering, physics, and game logic efficiently.
 
 ## 🎮 Gameplay Overview
-Survive as long as you can against endless waves of geometric enemies! Aim, shoot, and dodge. When large enemies are destroyed, they shatter into smaller pieces in a 360-degree blast, requiring quick reflexes to survive. To see it renning see `DEMO.mp4`.
+Survive as long as you can against endless waves of geometric enemies! Aim, shoot, and dodge. When large enemies are destroyed, they shatter into smaller pieces in a 360-degree blast, requiring quick reflexes to survive. To see it renning see `DEMO.mp4` here...
+
+https://github.com/user-attachments/assets/e6273c10-c748-458f-ac9e-9fe61a5e455a
+
+
 
 ## ✨ Key Features
 * **Custom ECS Engine:** Built a robust Entity-Component-System from the ground up for memory-efficient game loop management.
