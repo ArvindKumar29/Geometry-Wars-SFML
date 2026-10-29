@@ -14,6 +14,9 @@ public:
 	std::shared_ptr<Component::CInput> CInput;
 	std::shared_ptr<Component::CLifespan> CLifespan;
 	std::shared_ptr <Component::CHealth> CHealth;
+	float lastEnemyRushTime = 0, enemyRushTimer = 0.0f;
+	Vec2 rushVelocity = Vec2(0.0f, 0.0f);
+	bool enemyInRush = false;
 
 	Entity(std::string tag, size_t id){
 		m_tag = tag;

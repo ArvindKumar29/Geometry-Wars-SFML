@@ -1,6 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "EntityManager.h"
+//#include "Systems.h"
+#include "LevelSpecs.h"
+
+struct windowConfig {
+	int width;
+	int height;
+	int framerateLimit;
+};
+
+struct fontConfig {
+	std::string fontPath;
+	int fr, fg, fb;
+};
 
 struct playerConfig {
 	int V;
@@ -17,7 +30,7 @@ struct enemyConfig {
 	int RMAX, RMIN;
 	int FRMAX, FGMAX, FBMAX;
 	int FRMIN, FGMIN, FBMIN;
-	int ORMAX, OGMAX,  OBMAX;
+	int ORMAX, OGMAX, OBMAX;
 	int ORMIN, OGMIN, OBMIN;
 	int OT;
 	int SMAX; int SMIN;
@@ -33,35 +46,50 @@ struct bulletConfig {
 	int l;
 };
 
+enum class GameState {
+	Running,
+	Dead,
+	Paused,
+	Victory
+};
+
 class GameMode
 {
-
-
-	sf::RenderWindow m_window;
 	EntityManager m_entityManager;
-	std::shared_ptr<Entity> m_player;
-	bool m_paused = false;
-	bool m_running;
-	int m_score = 0;
 	void init(std::string path);
-	size_t currentFrame = 0, lastEnemySpawnFrame = 0;
+	bool m_running;
+	sf::Font m_font;
+	sf::RenderWindow m_window;
+	Vec2 mousePos;
+	int m_score;
+	sf::Text m_scoreText, m_healthText, m_bossHealthText, m_UIText;
+	bool bossActive;
+	int bossHealth, m_playerHealth;
+	int SpecialAttackCount;
+	bool m_paused;
+	windowConfig WindowConfig;
+	fontConfig FontConfig;
 	playerConfig PlayerConfig;
 	enemyConfig EnemyConfig;
 	bulletConfig BulletConfig;
-	sf::Font m_font;
-	sf::Text m_scoreText;
+	LevelSpecs::Level currentLevel;
+	std::shared_ptr<Entity> m_player;
+	size_t currentFrame, lastEnemySpawnFrame;
+	GameState m_gameState;
 
 public:
-	void run(std::string path);
-	void sMovement();
-	void sRender();
-	void sEnemySpawner();
-	void sCollision();
-	void sLifespan();
-	void sSpawnEnemy();
+	void sMovement(float dt);
+	void sRender(sf::RenderWindow& window, float dt);
+	void sEnemySpawner(float dt);
+	void sCollision(float dt);
+	void sLifespan(float dt);
+	void sSpawnEnemy(float dt);
 	bool sPause();
-	void sInput();
-	void sPawnBullet(Vec2 mousePos);
-	void smallEnemySpawner(std::shared_ptr<Entity> parant);
+	void sInput(float dt);
+	void sPawnBullet(Vec2 mousePos, float dt);
+	void sSpawnSpecialAttack(Vec2 mousePos, float dt);
+	void smallEnemySpawner(std::shared_ptr<Entity> parent, float dt);
+	void sUI();
+	void run(std::string path);
 };
 

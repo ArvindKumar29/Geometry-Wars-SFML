@@ -22,6 +22,7 @@ public:
 		sf::Color SColor;
 		sf::Color OColor;
 		Vec2 pos;
+		float rotation;
 		float outlineThickness;
 
 		CShape(int vertices, float radius, sf::Color SColor, sf::Color OColor, Vec2 pos, float outlineThickness) {
@@ -30,6 +31,7 @@ public:
 			shape.setFillColor(SColor);
 			shape.setOutlineColor(OColor);
 			shape.setPosition(pos.x, pos.y);
+			shape.setRotation(0.0f);
 			shape.setOutlineThickness(outlineThickness);
 			shape.setOrigin(radius, radius);
 		};
@@ -55,12 +57,16 @@ public:
 		bool down = false;
 		bool right = false;
 		bool left = false;
+		bool alt = false;
+		bool SpecialAttack = false;
 
 		CInput() {
 			this->up = false;
 			this->down = false;
 			this->right = false;
 			this->left = false;
+			this->alt = false;
+			this->SpecialAttack = false;
 		}
 	};
 

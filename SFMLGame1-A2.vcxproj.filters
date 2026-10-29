@@ -30,6 +30,9 @@
     <ClInclude Include="GameMode.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="LevelSpecs.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vec2.cpp">
@@ -47,9 +50,13 @@
     <ClCompile Include="GameMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LevelSpecs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Config.txt" />
+    <Text Include="Level1.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

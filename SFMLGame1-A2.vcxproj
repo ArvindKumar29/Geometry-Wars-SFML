@@ -137,17 +137,20 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="GameMode.h" />
+    <ClInclude Include="LevelSpecs.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="GameMode.cpp" />
+    <ClCompile Include="LevelSpecs.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Config.txt" />
+    <Text Include="Level1.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
