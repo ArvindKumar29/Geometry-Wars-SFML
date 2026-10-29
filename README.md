@@ -7,7 +7,8 @@ Survive as long as you can against endless waves of geometric enemies! Aim, shoo
 
 https://github.com/user-attachments/assets/e6273c10-c748-458f-ac9e-9fe61a5e455a
 
-
+Also take a look at the architecture: 
+https://github.com/ArvindKumar29/Geometry-Wars-SFML/blob/main/Architecture%20Diagram.png
 
 ## ✨ Key Features
 * **Custom ECS Engine:** Built a robust Entity-Component-System from the ground up for memory-efficient game loop management.
